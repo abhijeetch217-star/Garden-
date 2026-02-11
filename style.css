@@ -1,0 +1,82 @@
+body{
+  margin:0;
+  overflow:hidden;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,
+  #e8fdf5,
+  #e6f7ff,
+  #fff4d6,
+  #ffe6f0);
+}
+
+h1{
+  position:fixed;
+  top:20px;
+  width:100%;
+  text-align:center;
+  color:#444;
+  font-weight:500;
+  letter-spacing:1px;
+}
+
+/* Flower container */
+.flower{
+  position:absolute;
+  pointer-events:none;
+  transform-origin:bottom center;
+}
+
+/* Stem */
+.stem{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:4px;
+  height:0;
+  background:#2e7d32;
+  transform:translateX(-50%);
+  animation:growStem 1.2s ease forwards;
+}
+
+/* Petals */
+.petal{
+  position:absolute;
+  opacity:0;
+  animation:bloom 1.3s ease forwards;
+}
+
+.center{
+  position:absolute;
+  border-radius:50%;
+  opacity:0;
+  animation:bloom 1.3s ease forwards;
+}
+
+/* Falling petals */
+.falling{
+  position:absolute;
+  animation:fall 4s ease-in forwards;
+}
+
+@keyframes growStem{
+  from{height:0;}
+  to{height:70px;}
+}
+
+@keyframes bloom{
+  from{transform:scale(0); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(350px)
+              translateX(var(--drift))
+              rotate(220deg);
+    opacity:0;
+  }
+}
